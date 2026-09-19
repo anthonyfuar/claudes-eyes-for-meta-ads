@@ -106,18 +106,17 @@ Everything above is what a user sees. The rest is for people who want to know wh
 ### How it works
 
 ```
-Meta Ads MCP ──ads_get_ad_preview──▶ preview_url
-                                        │
-                                        ▼
-                     scripts/analyze-ad.js
-```
+Meta Ads MCP → ads_get_ad_preview → preview_url
+                                        ↓
+                              scripts/analyze-ad.js
 
-1. Fetch the preview page and lift the real CDN media URL.
-2. Download to `downloads/`, hash it.
-3. Upload to the Gemini Files API, wait until `ACTIVE`.
-4. Pass 1 — observation: transcript, timeline, on-screen text.
-5. Pass 2 — strategy: hook, angle, awareness, audience, flags.
-6. Write `reports/<ad name>.md`, delete the media, the context file and the upload.
+  1. fetch the preview page, lift the real CDN media URL
+  2. download to downloads/, hash it
+  3. upload to the Gemini Files API, wait until ACTIVE
+  4. pass 1 - observation: transcript, timeline, on-screen text
+  5. pass 2 - strategy: hook, angle, awareness, audience, flags
+  6. write reports/<ad name>.md, delete media, context, upload
+```
 
 Two passes because the two response schemas together are about 25 KB and Gemini would not take them as one `responseSchema`. Pass 2 gets pass 1 as its notes.
 
