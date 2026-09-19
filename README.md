@@ -56,10 +56,6 @@ Get a key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey). I
 - Paste `https://mcp.facebook.com/ads` and save.
 - Log in with the Meta Business Manager account that has access to the ad account.
 
-On Team and Enterprise plans an organization owner adds the connector first under **Organization settings → Connectors**; each person then logs in with their own Meta account.
-
-To check it works, ask Claude to list your ad accounts. If an account shows `is_ads_mcp_enabled: false`, Meta has not opened the connector for that account yet. There is nothing to configure; it arrives on its own.
-
 **4. Ask**
 
 > Analyze the ad "Cold Brew Kit — UGC 30s".
