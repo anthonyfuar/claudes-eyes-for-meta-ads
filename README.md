@@ -4,13 +4,17 @@
 
 <h1 align="center">Claude's Eyes for Meta Ads</h1>
 
-Claude can already read your Meta ad account: spend, results, what is on and off. It cannot see the ads themselves. This skill lets it.
+<p align="center">
+  Claude can already read your Meta ad account: spend, results, what is on and off. It cannot see the ads themselves. This skill lets it.
+  <br /><br />
+  Ask Claude to analyze an ad and you get back a short report that says what the ad is arguing, who it is talking to, what the first seconds do, where the message falls apart, and what to test next. The report is saved as a text file named after the ad.
+</p>
 
-Ask Claude to analyze an ad and you get back a short report that says what the ad is arguing, who it is talking to, what the first seconds do, where the message falls apart, and what to test next. The report is saved as a text file named after the ad.
-
-![Node 20.12+](https://img.shields.io/badge/node-%E2%89%A520.12-339933?logo=node.js&logoColor=white)
-![Zero dependencies](https://img.shields.io/badge/dependencies-0-blue)
-![License MIT](https://img.shields.io/badge/license-MIT-green)
+<p align="center">
+  <img src="https://img.shields.io/badge/node-%E2%89%A520.12-339933?logo=node.js&logoColor=white" alt="Node 20.12+" />
+  <img src="https://img.shields.io/badge/dependencies-0-blue" alt="Zero dependencies" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT" />
+</p>
 
 ## What you get
 
@@ -38,7 +42,7 @@ You need three things: a Meta ad account with at least one ad, the Meta Ads conn
 **1. Install the skill**
 
 ```bash
-git clone https://github.com/<you>/claudes-eyes-for-meta-ads ~/.claude/skills/claudes-eyes-for-meta-ads
+git clone https://github.com/anthonyfuar/claudes-eyes-for-meta-ads ~/.claude/skills/claudes-eyes-for-meta-ads
 ```
 
 **2. Add your Gemini key**
@@ -110,16 +114,14 @@ Meta Ads MCP ──ads_get_ad_preview──▶ preview_url
                                         │
                                         ▼
                      scripts/analyze-ad.js
-                                        │
-        ┌───────────────────────────────┼───────────────────────────────┐
-        │ 1. fetch the preview page and lift the real CDN media URL      │
-        │ 2. download to downloads/, hash it                             │
-        │ 3. upload to the Gemini Files API, wait until ACTIVE           │
-        │ 4. pass 1 — observation: transcript, timeline, on-screen text  │
-        │ 5. pass 2 — strategy: hook, angle, awareness, audience, flags  │
-        │ 6. write reports/<ad name>.md, delete media, context, upload   │
-        └────────────────────────────────────────────────────────────────┘
 ```
+
+1. Fetch the preview page and lift the real CDN media URL.
+2. Download to `downloads/`, hash it.
+3. Upload to the Gemini Files API, wait until `ACTIVE`.
+4. Pass 1 — observation: transcript, timeline, on-screen text.
+5. Pass 2 — strategy: hook, angle, awareness, audience, flags.
+6. Write `reports/<ad name>.md`, delete the media, the context file and the upload.
 
 Two passes because the two response schemas together are about 25 KB and Gemini would not take them as one `responseSchema`. Pass 2 gets pass 1 as its notes.
 
